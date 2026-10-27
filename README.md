@@ -95,7 +95,7 @@ dotnet --version        # should print 8.x
 ```powershell
 cd $HOME
 git clone https://github.com/lw7ylw7y/knowledge_store-public.git
-cd knowledge_store
+cd knowledge_store-public
 ```
 
 Later, `git pull` brings in new changes.
