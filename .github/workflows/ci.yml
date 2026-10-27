@@ -1,0 +1,106 @@
+# Builds and tests every push and pull request, on Linux and on Windows. The Windows job also compiles the WinUI 3 app
+# and runs scripts/publish-app.ps1, which cannot be done anywhere else. See docs/Stories and Test Plan.md ("Continuous
+# integration"). Real-model evaluation runs are not part of this workflow.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  linux:
+    name: Build and test (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-linux-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-linux-
+
+      - name: Build
+        run: dotnet build BookSearch.sln -c Release
+
+      - name: Test
+        run: dotnet test BookSearch.sln -c Release --no-build --logger "trx;LogFileName=linux.trx" --results-directory TestResults
+
+      - name: Summary
+        if: always()
+        run: python3 scripts/ci_summary.py "Linux tests" TestResults >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-linux
+          path: TestResults/*.trx
+          retention-days: 14
+
+  windows:
+    name: Build, test and publish (Windows)
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - uses: actions/cache@v4
+        with:
+          path: ~\.nuget\packages
+          key: nuget-windows-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-windows-
+
+      - name: Build (everything except the WinUI app)
+        run: dotnet build BookSearch.sln -c Release
+
+      - name: Test
+        run: dotnet test BookSearch.sln -c Release --no-build --logger "trx;LogFileName=windows.trx" --results-directory TestResults
+
+      - name: Summary
+        if: always()
+        shell: pwsh
+        run: python scripts/ci_summary.py "Windows tests" TestResults | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+
+      - name: Build and publish the app (compiles the WinUI project)
+        shell: pwsh
+        run: ./scripts/publish-app.ps1
+
+      - name: Check the published app has what it needs
+        shell: pwsh
+        run: |
+          $out = 'publish/BookSearch'
+          $need = 'BookSearch.exe', 'BookSearch.Worker.exe', 'native/win-x64/vec0.dll'
+          $missing = $need | Where-Object { -not (Test-Path (Join-Path $out $_)) }
+          if ($missing) { throw "Missing from the publish folder: $($missing -join ', ')" }
+          $mb = [math]::Round((Get-ChildItem $out -Recurse -File | Measure-Object Length -Sum).Sum / 1MB)
+          "Published app: $mb MB" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-windows
+          path: TestResults/*.trx
+          retention-days: 14

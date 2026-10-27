@@ -1,0 +1,68 @@
+<Page
+    x:Class="BookSearch.App.Pages.HistoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="using:BookSearch.App"
+    xmlns:hist="using:BookSearch.App.History">
+
+    <Grid Padding="32" RowSpacing="12" MaxWidth="1200" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Uid="HistoryTitle" Style="{StaticResource TitleTextBlockStyle}" />
+        <TextBlock Grid.Row="1" x:Uid="HistoryEmpty" TextWrapping="Wrap" Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                   Visibility="{x:Bind ViewModel.IsEmpty, Mode=OneWay}" />
+
+        <!-- One expander per conversation: the first question as the title, the question count and the time of the last one;
+             opened, it lists every question with its summary. -->
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl ItemsSource="{x:Bind ViewModel.Rows}" HorizontalAlignment="Stretch">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="hist:ThreadRow">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8" Margin="0,0,0,8">
+                            <Expander HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                      AutomationProperties.Name="{x:Bind AutomationName, Mode=OneWay}">
+                                <Expander.Header>
+                                    <StackPanel Spacing="2" Padding="0,8">
+                                        <TextBlock Text="{x:Bind Title, Mode=OneWay}" Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                   TextWrapping="Wrap" FlowDirection="{x:Bind app:Rtl.For(Title), Mode=OneWay}" />
+                                        <TextBlock Text="{x:Bind Details, Mode=OneWay}"
+                                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    </StackPanel>
+                                </Expander.Header>
+                                <StackPanel Spacing="12">
+                                    <ItemsControl ItemsSource="{x:Bind Entries}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate x:DataType="hist:HistoryRow">
+                                                <StackPanel Spacing="4" Margin="0,0,0,12">
+                                                    <TextBlock Text="{x:Bind Question}" Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                               TextWrapping="Wrap" IsTextSelectionEnabled="True"
+                                                               FlowDirection="{x:Bind app:Rtl.For(Question)}" />
+                                                    <TextBlock Text="{x:Bind When}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    <TextBlock Text="{x:Bind StatusText, Mode=OneWay}" TextWrapping="Wrap"
+                                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                                               Visibility="{x:Bind HasStatusText, Mode=OneWay}" />
+                                                    <TextBlock Text="{x:Bind Summary, Mode=OneWay}" TextWrapping="Wrap"
+                                                               FlowDirection="{x:Bind app:Rtl.For(Summary), Mode=OneWay}"
+                                                               IsTextSelectionEnabled="True" Visibility="{x:Bind HasSummary, Mode=OneWay}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <Button x:Uid="HistoryContinueButton" Click="Continue_Click" />
+                                </StackPanel>
+                            </Expander>
+                            <Button Grid.Column="1" x:Uid="HistoryCloseButton" Click="Close_Click" VerticalAlignment="Top"
+                                    Background="Transparent" BorderThickness="0" Margin="0,8,0,0">
+                                <SymbolIcon Symbol="Cancel" />
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

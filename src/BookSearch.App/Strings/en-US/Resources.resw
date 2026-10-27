@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Title" xml:space="preserve"><value>Docent</value></data>
+  <data name="NavLibrary.Content" xml:space="preserve"><value>Library</value></data>
+  <data name="NavAsk.Content" xml:space="preserve"><value>Ask</value></data>
+  <data name="NavSettings.Content" xml:space="preserve"><value>Settings</value></data>
+  <data name="LibraryTitle.Text" xml:space="preserve"><value>Library</value></data>
+  <data name="LibraryEmptyTitle.Text" xml:space="preserve"><value>Your library is empty</value></data>
+  <data name="LibraryEmptyBody.Text" xml:space="preserve"><value>Add books to search them. Everything stays on this PC.</value></data>
+  <data name="LibraryAddButton.Content" xml:space="preserve"><value>Add books</value></data>
+  <data name="AskTitle.Text" xml:space="preserve"><value>Ask</value></data>
+  <data name="SettingsTitle.Text" xml:space="preserve"><value>Settings</value></data>
+  <data name="SettingsDataFolderLabel.Text" xml:space="preserve"><value>Data folder</value></data>
+  <data name="SettingsModelLabel.Text" xml:space="preserve"><value>Model size</value></data>
+  <data name="SettingsDatabaseLabel.Text" xml:space="preserve"><value>Library database</value></data>
+  <data name="SettingsTierNote.Text" xml:space="preserve"><value>Changing the model size reloads the app. If the other model is not on this PC yet, you are asked to download it.</value></data>
+  <data name="SettingsGroupAdvanced.Header" xml:space="preserve"><value>Advanced</value></data>
+  <data name="Settings_TierChosen" xml:space="preserve"><value>Chosen by you: {0}</value></data>
+  <data name="Settings_TierRecommended" xml:space="preserve"><value>Recommended for this PC: {0}</value></data>
+  <data name="Settings_Database" xml:space="preserve"><value>Schema version {0}, sqlite-vec {1}</value></data>
+  <data name="StartupErrorTitle.Text" xml:space="preserve"><value>The library could not be opened</value></data>
+  <data name="StartupErrorBody.Text" xml:space="preserve"><value>The app could not open its library database. Details:</value></data>
+  <data name="WizardPrivacyTitle.Text" xml:space="preserve"><value>Your books stay on this PC</value></data>
+  <data name="WizardPrivacyBody.Text" xml:space="preserve"><value>Docent reads your books and answers your questions entirely on this computer. Your books, questions and answers are never sent anywhere. The only time the app uses the internet is to download, once, its two models and the llama.cpp program that runs them (each file is checked against a fixed checksum), and you can avoid even that by importing the files from disk.</value></data>
+  <data name="WizardHardwareTitle.Text" xml:space="preserve"><value>Choose a model size</value></data>
+  <data name="WizardBelowMinimumBar.Message" xml:space="preserve"><value>This PC has less memory than recommended. The app still works with the smaller model, but summaries may be slow.</value></data>
+  <data name="WizardRecommendedBadge.Text" xml:space="preserve"><value>Recommended for this PC</value></data>
+  <data name="WizardModelsTitle.Text" xml:space="preserve"><value>Get the models</value></data>
+  <data name="WizardModelsBody.Text" xml:space="preserve"><value>The app needs two models: one to find passages and one to write short summaries. Each file is checked against a known checksum. You can pause a download and continue it later.</value></data>
+  <data name="WizardDownloadButton.Content" xml:space="preserve"><value>Download</value></data>
+  <data name="WizardCancelButton.Content" xml:space="preserve"><value>Pause</value></data>
+  <data name="WizardImportButton.Content" xml:space="preserve"><value>Import from disk…</value></data>
+  <data name="WizardBackButton.Content" xml:space="preserve"><value>Back</value></data>
+  <data name="WizardFinishButton.Content" xml:space="preserve"><value>Get started</value></data>
+  <data name="WizardDoneTitle.Text" xml:space="preserve"><value>You're ready</value></data>
+  <data name="WizardDoneBody.Text" xml:space="preserve"><value>Add your books in the Library to start searching them.</value></data>
+  <data name="Wizard_Accept" xml:space="preserve"><value>Accept and continue</value></data>
+  <data name="Wizard_Next" xml:space="preserve"><value>Next</value></data>
+  <data name="Wizard_RamLine" xml:space="preserve"><value>This PC has {0:0.#} GB of memory.</value></data>
+  <data name="Wizard_TierMinimumTitle" xml:space="preserve"><value>Smaller and faster</value></data>
+  <data name="Wizard_TierMinimumDescription" xml:space="preserve"><value>Qwen3.5 2B. Download about {0:0.0} GB. Suits PCs with 8 GB of memory.</value></data>
+  <data name="Wizard_TierRecommendedTitle" xml:space="preserve"><value>Better answers</value></data>
+  <data name="Wizard_TierRecommendedDescription" xml:space="preserve"><value>Qwen3.5 4B. Download about {0:0.0} GB. Best with 12 GB of memory or more.</value></data>
+  <data name="Wizard_ModelRuntime" xml:space="preserve"><value>Program that runs the models (llama.cpp)</value></data>
+  <data name="Wizard_ModelEmbedding" xml:space="preserve"><value>Search model</value></data>
+  <data name="Wizard_ModelLlm" xml:space="preserve"><value>Summary model</value></data>
+  <data name="Wizard_SizeGb" xml:space="preserve"><value>{0:0.00} GB</value></data>
+  <data name="Wizard_RowInstalled" xml:space="preserve"><value>Installed</value></data>
+  <data name="Wizard_RowStarting" xml:space="preserve"><value>Starting…</value></data>
+  <data name="Wizard_RowDownloading" xml:space="preserve"><value>Downloading {0:0} MB of {1:0} MB</value></data>
+  <data name="Wizard_RowVerifying" xml:space="preserve"><value>Checking {0:0} MB of {1:0} MB</value></data>
+  <data name="Wizard_AlreadyInstalled" xml:space="preserve"><value>The models are already installed.</value></data>
+  <data name="Wizard_AllInstalled" xml:space="preserve"><value>All models are installed.</value></data>
+  <data name="Wizard_DownloadPaused" xml:space="preserve"><value>Paused. Press Download to continue where it stopped.</value></data>
+  <data name="Wizard_ErrorChecksum" xml:space="preserve"><value>A downloaded file did not match its checksum and was deleted. Press Download to try again.</value></data>
+  <data name="Wizard_ErrorNetwork" xml:space="preserve"><value>The download could not continue. Check your connection, then press Download to resume.</value></data>
+  <data name="Wizard_ErrorDisk" xml:space="preserve"><value>A file could not be written: {0}</value></data>
+  <data name="Wizard_Imported" xml:space="preserve"><value>Imported {0}</value></data>
+  <data name="LibraryDropHint.Text" xml:space="preserve"><value>You can also drag books onto this page.</value></data>
+  <data name="Library_StatusQueued" xml:space="preserve"><value>Queued</value></data>
+  <data name="Library_StatusReading" xml:space="preserve"><value>Reading the file…</value></data>
+  <data name="Library_StatusIndexing" xml:space="preserve"><value>Indexing {0:0}%</value></data>
+  <data name="Library_StatusReady" xml:space="preserve"><value>Ready</value></data>
+  <data name="Library_StatusRejected" xml:space="preserve"><value>Rejected</value></data>
+  <data name="Library_StatusFailed" xml:space="preserve"><value>Failed</value></data>
+  <data name="LibraryAddBarButton.Label" xml:space="preserve"><value>Add books</value></data>
+  <data name="LibraryFindBox.PlaceholderText" xml:space="preserve"><value>Find a book</value></data>
+  <data name="LibraryFindBox.AutomationProperties.Name" xml:space="preserve"><value>Find a book</value></data>
+  <data name="LibraryTagsMenuItem.Text" xml:space="preserve"><value>Tags…</value></data>
+  <data name="LibraryRemoveMenuItem.Text" xml:space="preserve"><value>Remove</value></data>
+  <data name="LibrarySelectBarButton.Label" xml:space="preserve"><value>Select</value></data>
+  <data name="LibraryCancelBarButton.Label" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Library_SelectedCount" xml:space="preserve"><value>{0} selected</value></data>
+  <data name="Library_AddTagsToOne" xml:space="preserve"><value>Add tags to 1 book</value></data>
+  <data name="Library_AddTagsToMany" xml:space="preserve"><value>Add tags to {0} books</value></data>
+  <data name="Library_IndexingOne" xml:space="preserve"><value>Indexing 1 book</value></data>
+  <data name="Library_Indexing" xml:space="preserve"><value>Indexing {0} books</value></data>
+  <data name="Library_IndexingPaused" xml:space="preserve"><value>Indexing paused: {0} waiting</value></data>
+  <data name="Library_IndexingPausedIdle" xml:space="preserve"><value>Indexing is paused</value></data>
+  <data name="Library_ActionTick" xml:space="preserve"><value>Press Enter to select.</value></data>
+  <data name="Library_ActionUntick" xml:space="preserve"><value>Press Enter to clear the selection.</value></data>
+  <data name="Library_RowSelected" xml:space="preserve"><value>selected</value></data>
+  <data name="Library_NoMatch" xml:space="preserve"><value>No book matches "{0}".</value></data>
+  <data name="Library_MoreName" xml:space="preserve"><value>More actions for {0}</value></data>
+  <data name="Library_Read" xml:space="preserve"><value>Read</value></data>
+  <data name="Library_Continue" xml:space="preserve"><value>Continue</value></data>
+  <data name="Library_OpenFile" xml:space="preserve"><value>Open file</value></data>
+  <data name="Library_Place" xml:space="preserve"><value>Section {0} of {1}</value></data>
+  <data name="Library_TooltipRead" xml:space="preserve"><value>Read this book</value></data>
+  <data name="Library_TooltipContinue" xml:space="preserve"><value>Continue reading this book</value></data>
+  <data name="Library_TooltipOpenFile" xml:space="preserve"><value>Open the original file</value></data>
+  <data name="Library_ActionRead" xml:space="preserve"><value>Press Enter to read.</value></data>
+  <data name="Library_ActionContinue" xml:space="preserve"><value>Press Enter to continue reading.</value></data>
+  <data name="Library_ActionOpenFile" xml:space="preserve"><value>Press Enter to open the original file.</value></data>
+  <data name="Library_ReadName" xml:space="preserve"><value>Read {0}</value></data>
+  <data name="Library_ContinueName" xml:space="preserve"><value>Continue reading {0}</value></data>
+  <data name="Library_OpenFileName" xml:space="preserve"><value>Open the original file of {0}</value></data>
+  <data name="Library_SelectBook" xml:space="preserve"><value>Select {0}</value></data>
+  <data name="Library_NoteFileMissing" xml:space="preserve"><value>The original file was moved or deleted.</value></data>
+  <data name="Library_NoteOpenFailed" xml:space="preserve"><value>The file could not be opened: {0}</value></data>
+  <data name="Library_Pause" xml:space="preserve"><value>Pause indexing</value></data>
+  <data name="Library_Resume" xml:space="preserve"><value>Resume indexing</value></data>
+  <data name="Library_NoticeDuplicate" xml:space="preserve"><value>Already in your library: {0}</value></data>
+  <data name="Library_NoticeDuplicates" xml:space="preserve"><value>{0} books were already in your library.</value></data>
+  <data name="Library_NoticeUnsupported" xml:space="preserve"><value>Skipped {0}: only EPUB, PDF, TXT and MD files can be added.</value></data>
+  <data name="Library_NoticeUnreadable" xml:space="preserve"><value>Could not read {0}.</value></data>
+  <data name="Library_BannerWorkerStopped" xml:space="preserve"><value>Indexing stopped unexpectedly. Close and reopen the app to continue.</value></data>
+  <data name="Library_NoWorker" xml:space="preserve"><value>The indexing program was not found: {0}</value></data>
+  <data name="Library_NoServer" xml:space="preserve"><value>Indexing needs llama-server.exe, which was not found. Put it at {0}. Books stay queued until it is there.</value></data>
+  <data name="Library_NoEmbeddingModel" xml:space="preserve"><value>The search model is not installed. Close and reopen the app to run the model setup again.</value></data>
+  <data name="Library_RemoveTitle" xml:space="preserve"><value>Remove "{0}"?</value></data>
+  <data name="Library_RemoveBody" xml:space="preserve"><value>The book and its search index are deleted from this library. The original file is not touched.</value></data>
+  <data name="Library_RemoveConfirm" xml:space="preserve"><value>Remove</value></data>
+  <data name="Library_RemoveCancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="AskQuestionBox.PlaceholderText" xml:space="preserve"><value>Ask a question or enter a topic</value></data>
+  <data name="AskSearchButton.Content" xml:space="preserve"><value>Search</value></data>
+  <data name="AskNotCoveredBar.Message" xml:space="preserve"><value>Your library doesn't seem to cover this. The closest passages are shown below.</value></data>
+  <data name="AskNoBooksTitle.Text" xml:space="preserve"><value>Add books first</value></data>
+  <data name="AskGoToLibraryButton.Content" xml:space="preserve"><value>Go to Library</value></data>
+  <data name="AskNoBooksBody.Text" xml:space="preserve"><value>Your library has no books yet. Add some in the Library, then ask questions about them.</value></data>
+  <data name="AskIndexingTitle.Text" xml:space="preserve"><value>Your books are still being indexed</value></data>
+  <data name="AskIndexingBody.Text" xml:space="preserve"><value>You can ask as soon as the first book is ready. Indexing continues in the background.</value></data>
+  <data name="Ask_WarningStarting" xml:space="preserve"><value>Semantic search is still starting, so these are keyword matches. The list will update when it is ready.</value></data>
+  <data name="Ask_WarningUnavailable" xml:space="preserve"><value>Semantic search isn't available, so only keyword matches are shown.</value></data>
+  <data name="Ask_Incomplete" xml:space="preserve"><value>Some books are still being indexed ({0}), so results may be incomplete.</value></data>
+  <data name="Ask_NoResults" xml:space="preserve"><value>No passages matched.</value></data>
+  <data name="Ask_Page" xml:space="preserve"><value>p. {0}</value></data>
+  <data name="Ask_Pages" xml:space="preserve"><value>pp. {0}–{1}</value></data>
+  <data name="AskSummaryTitle.Text" xml:space="preserve"><value>Summaries</value></data>
+  <data name="SettingsSummarizeToggle.Header" xml:space="preserve"><value>Write a summary automatically after each search</value></data>
+  <data name="SettingsOtherLanguagesToggle.Header" xml:space="preserve"><value>Also search in the other languages of your books</value></data>
+  <data name="SettingsOtherLanguagesToggle.OnContent" xml:space="preserve"><value>On</value></data>
+  <data name="SettingsOtherLanguagesToggle.OffContent" xml:space="preserve"><value>Off</value></data>
+  <data name="SettingsOtherLanguagesNote.Text" xml:space="preserve"><value>The language model writes your question in the other languages in your library, so books in those languages are found too. The question and its translations are shown above the results. This needs the automatic summary above to be on.</value></data>
+  <data name="SettingsSummarizeToggle.OnContent" xml:space="preserve"><value>On</value></data>
+  <data name="SettingsSummarizeToggle.OffContent" xml:space="preserve"><value>Off</value></data>
+  <data name="Ask_PhaseLoading" xml:space="preserve"><value>Loading model…</value></data>
+  <data name="Ask_PassageWaiting" xml:space="preserve"><value>Waiting to be summarized…</value></data>
+  <data name="Ask_PassageWriting" xml:space="preserve"><value>Summarizing…</value></data>
+  <data name="Ask_PassageNotSummarized" xml:space="preserve"><value>Not summarized.</value></data>
+  <data name="Ask_PassageNotCovered" xml:space="preserve"><value>This passage doesn't cover your question.</value></data>
+  <data name="Ask_SummaryEmpty" xml:space="preserve"><value>The model did not write a summary. Try again.</value></data>
+  <data name="Ask_SummaryUnavailable" xml:space="preserve"><value>The summary model could not be started. Check that llama-server.exe and the language model are installed.</value></data>
+  <data name="Ask_SummaryFailed" xml:space="preserve"><value>The summary could not be written: {0}</value></data>
+  <data name="Library_NoticePickerFailed" xml:space="preserve"><value>The file dialog could not be opened ({0}). You can still drag books onto this page.</value></data>
+  <data name="Wizard_ErrorPicker" xml:space="preserve"><value>The file picker could not be opened ({0}).</value></data>
+  <data name="Library_PickerTitle" xml:space="preserve"><value>Add books</value></data>
+  <data name="Library_PickerFilter" xml:space="preserve"><value>Books (EPUB, PDF, TXT, MD)</value></data>
+  <data name="Wizard_PickerTitle" xml:space="preserve"><value>Import model files</value></data>
+  <data name="Wizard_PickerFilter" xml:space="preserve"><value>Model files (*.gguf)</value></data>
+  <data name="Library_NoticeDropFailed" xml:space="preserve"><value>Windows would not hand over the dropped files ({0}). Use the Add books button instead.</value></data>
+  <data name="Library_BannerElevated" xml:space="preserve"><value>The app is running as administrator, so Windows blocks dragging files onto it. Close it and start it again normally (not with Run as administrator); the Add books button works either way.</value></data>
+  <data name="NavLibrary.ToolTipService.ToolTip" xml:space="preserve"><value>Library</value></data>
+  <data name="NavLibrary.AutomationProperties.Name" xml:space="preserve"><value>Library</value></data>
+  <data name="NavAsk.ToolTipService.ToolTip" xml:space="preserve"><value>Ask</value></data>
+  <data name="NavAsk.AutomationProperties.Name" xml:space="preserve"><value>Ask</value></data>
+  <data name="NavSettings.ToolTipService.ToolTip" xml:space="preserve"><value>Settings</value></data>
+  <data name="NavSettings.AutomationProperties.Name" xml:space="preserve"><value>Settings</value></data>
+  <data name="ReaderPreviousButton.Content" xml:space="preserve"><value>Previous section</value></data>
+  <data name="ReaderNextButton.Content" xml:space="preserve"><value>Next section</value></data>
+  <data name="ReaderOpenFileButton.Content" xml:space="preserve"><value>Open file</value></data>
+  <data name="Reader_BackToResults" xml:space="preserve"><value>Back to results</value></data>
+  <data name="Reader_BackToLibrary" xml:space="preserve"><value>Back to Library</value></data>
+  <data name="Reader_NoText" xml:space="preserve"><value>This book has no readable text. Try Open file to see the original.</value></data>
+  <data name="Reader_BookNotFound" xml:space="preserve"><value>This book could not be opened. It may have been removed. Go back to the Library and check the list.</value></data>
+  <data name="Reader_Position" xml:space="preserve"><value>Section {0} of {1}</value></data>
+  <data name="Reader_Page" xml:space="preserve"><value>p. {0}</value></data>
+  <data name="Reader_Pages" xml:space="preserve"><value>pp. {0}–{1}</value></data>
+  <data name="Reader_Untitled" xml:space="preserve"><value>Untitled section</value></data>
+  <data name="Reader_FileNotFound" xml:space="preserve"><value>File not found. The original file was moved or deleted.</value></data>
+  <data name="Reader_OpenFailed" xml:space="preserve"><value>The file could not be opened: {0}</value></data>
+  <data name="Reader_LoadFailed" xml:space="preserve"><value>This passage could not be found. The book may have been removed.</value></data>
+  <data name="Reader_LoadFailedWith" xml:space="preserve"><value>The text could not be loaded: {0}</value></data>
+  <data name="Ask_SummaryWaiting" xml:space="preserve"><value>Waiting for an earlier summary to finish…</value></data>
+  <data name="Ask_SummaryStopped" xml:space="preserve"><value>Stopped.</value></data>
+  <data name="NavHistory.Content" xml:space="preserve"><value>History</value></data>
+  <data name="NavHistory.ToolTipService.ToolTip" xml:space="preserve"><value>History</value></data>
+  <data name="NavHistory.AutomationProperties.Name" xml:space="preserve"><value>History</value></data>
+  <data name="HistoryTitle.Text" xml:space="preserve"><value>History</value></data>
+  <data name="History_StatusWaiting" xml:space="preserve"><value>Waiting for an earlier summary…</value></data>
+  <data name="History_StatusWriting" xml:space="preserve"><value>Writing the summary…</value></data>
+  <data name="History_StatusStopped" xml:space="preserve"><value>The summary was stopped.</value></data>
+  <data name="History_StatusFailed" xml:space="preserve"><value>The summary could not be written.</value></data>
+  <data name="History_StatusNotCovered" xml:space="preserve"><value>Your library did not cover this question.</value></data>
+  <data name="History_StatusNone" xml:space="preserve"><value>No summary was written.</value></data>
+  <data name="History_ClearTitle" xml:space="preserve"><value>Clear all history?</value></data>
+  <data name="History_ClearBody" xml:space="preserve"><value>Every past search and its summary will be deleted. This cannot be undone.</value></data>
+  <data name="History_ClearConfirm" xml:space="preserve"><value>Clear history</value></data>
+  <data name="SettingsClearHistoryButton.Content" xml:space="preserve"><value>Clear all history</value></data>
+  <data name="HistoryEmpty.Text" xml:space="preserve"><value>Your threads appear here, with their summaries.</value></data>
+  <data name="HistoryContinueButton.Content" xml:space="preserve"><value>Continue this thread</value></data>
+  <data name="HistoryCloseButton.AutomationProperties.Name" xml:space="preserve"><value>Delete this thread</value></data>
+  <data name="HistoryCloseButton.ToolTipService.ToolTip" xml:space="preserve"><value>Delete this thread</value></data>
+  <data name="History_ThreadOne" xml:space="preserve"><value>{0} question · {1}</value></data>
+  <data name="History_ThreadMany" xml:space="preserve"><value>{0} questions · last {1}</value></data>
+  <data name="History_DeleteThreadTitle" xml:space="preserve"><value>Delete this thread?</value></data>
+  <data name="History_DeleteThreadBody" xml:space="preserve"><value>All {0} questions of this thread and their summaries will be deleted. This cannot be undone.</value></data>
+  <data name="History_DeleteThreadConfirm" xml:space="preserve"><value>Delete thread</value></data>
+  <data name="AskNewThreadButton.Content" xml:space="preserve"><value>New thread</value></data>
+  <data name="AskNewThreadButton.ToolTipService.ToolTip" xml:space="preserve"><value>Start a new thread. This one stays in History.</value></data>
+  <data name="SettingsContextBox.Header" xml:space="preserve"><value>Earlier questions used to understand a follow-up (0 to 3)</value></data>
+  <data name="SettingsContextNote.Text" xml:space="preserve"><value>When a question looks like a follow-up ("and his sister?"), the language model sees this many of your earlier questions in the thread, newest first, and rewrites the follow-up so it stands on its own ("What is Darcy's sister like?"). Only the rewritten question is searched and summarized; the rewrite is shown above the results. 0 searches every question as typed.</value></data>
+  <data name="Ask_SearchedAs" xml:space="preserve"><value>Searched as: {0}</value></data>
+  <data name="Ask_AlsoSearched" xml:space="preserve"><value>Also searched: {0}</value></data>
+  <data name="Ask_WarningNoTranslation" xml:space="preserve"><value>The language model could not write this question in the other languages of your books, so it was searched only as typed. Books in other languages may be missing from the results.</value></data>
+  <data name="Ask_WarningNoRewrite" xml:space="preserve"><value>The language model could not make this follow-up stand on its own, so it was searched as typed. The results may miss what it refers to.</value></data>
+  <data name="AskContextRemoveButton.ToolTipService.ToolTip" xml:space="preserve"><value>Search this question on its own</value></data>
+  <data name="AskContextRemoveButton.AutomationProperties.Name" xml:space="preserve"><value>Search this question on its own</value></data>
+  <data name="AskSourcesExpander.Header" xml:space="preserve"><value>Results</value></data>
+  <data name="WizardAllowDownloadsButton.Content" xml:space="preserve"><value>Allow downloads</value></data>
+  <data name="Wizard_ErrorDownloadsOff" xml:space="preserve"><value>Model downloads are turned off in Settings. Import the model files from disk, or press Allow downloads.</value></data>
+  <data name="SettingsTierHeader.Header" xml:space="preserve"><value>Model size</value></data>
+  <data name="SettingsChatContextHeader.Header" xml:space="preserve"><value>Language model memory</value></data>
+  <data name="Settings_ChatContextStandard" xml:space="preserve"><value>Standard (4096 tokens)</value></data>
+  <data name="Settings_ChatContextLarge" xml:space="preserve"><value>Large (8192 tokens, uses more memory)</value></data>
+  <data name="Settings_ChatContextApplies" xml:space="preserve"><value>A change applies the next time the language model starts: when it has been idle for a while, or after you restart the app. A larger size leaves more room when a follow-up is rewritten while a summary is being written; it uses more memory.</value></data>
+  <data name="SettingsResultCountBox.Header" xml:space="preserve"><value>Passages per search (1 to 10)</value></data>
+  <data name="SettingsChunkTokensBox.Header" xml:space="preserve"><value>Chunk size in tokens</value></data>
+  <data name="SettingsOverlapBox.Header" xml:space="preserve"><value>Chunk overlap in tokens</value></data>
+  <data name="SettingsChunkNote.Text" xml:space="preserve"><value>Chunk size and overlap apply to books you add from now on. Books already in the library keep their chunks; to re-chunk one, remove it and add it again.</value></data>
+  <data name="SettingsCpuSlider.Header" xml:space="preserve"><value>Share of the CPU that indexing may use (%)</value></data>
+  <data name="SettingsDownloadsToggle.Header" xml:space="preserve"><value>Allow model downloads</value></data>
+  <data name="SettingsDownloadsToggle.OnContent" xml:space="preserve"><value>On</value></data>
+  <data name="SettingsDownloadsToggle.OffContent" xml:space="preserve"><value>Off</value></data>
+  <data name="SettingsDeleteAllButton.Content" xml:space="preserve"><value>Delete all data…</value></data>
+  <data name="Settings_DeleteFailed" xml:space="preserve"><value>Some files could not be deleted ({0}). Close other programs using them and try again.</value></data>
+  <data name="Settings_DeleteAllTitle" xml:space="preserve"><value>Delete all data?</value></data>
+  <data name="Settings_DeleteAllBody" xml:space="preserve"><value>This deletes your library, its search index, your search history and your settings. Your book files are not touched. Downloaded models can be kept, so you don't have to download them again.</value></data>
+  <data name="Settings_DeleteKeepModels" xml:space="preserve"><value>Delete, keep models</value></data>
+  <data name="Settings_DeleteWithModels" xml:space="preserve"><value>Delete everything, including models</value></data>
+  <data name="Wizard_ErrorImportType" xml:space="preserve"><value>Only .gguf model files can be imported.</value></data>
+  <data name="Wizard_ErrorImportUnknown" xml:space="preserve"><value>This file is not one of the models this app uses (its checksum is not in the model list), so it was not imported.</value></data>
+  <data name="AskQuestionBox.AutomationProperties.Name" xml:space="preserve"><value>Question</value></data>
+  <data name="LibraryBookList.AutomationProperties.Name" xml:space="preserve"><value>Books in your library</value></data>
+  <data name="ReaderParagraphList.AutomationProperties.Name" xml:space="preserve"><value>Section text</value></data>
+  <data name="WizardTierList.AutomationProperties.Name" xml:space="preserve"><value>Model size</value></data>
+  <data name="SettingsGroupSearch.Text" xml:space="preserve"><value>Search and summaries</value></data>
+  <data name="SettingsGroupModels.Text" xml:space="preserve"><value>Models</value></data>
+  <data name="SettingsGroupIndexing.Text" xml:space="preserve"><value>Indexing</value></data>
+  <data name="SettingsGroupData.Text" xml:space="preserve"><value>Your data</value></data>
+  <data name="Ask_FilterChip" xml:space="preserve"><value>Searched only in: {0}</value></data>
+  <data name="Ask_FilterActive" xml:space="preserve"><value>Searching only in: {0}</value></data>
+  <data name="Ask_FilterNone" xml:space="preserve"><value>Searching all books</value></data>
+  <data name="Ask_NoBooksInFilter" xml:space="preserve"><value>No indexed book matches your filter. Change or clear the filter.</value></data>
+  <data name="AskFilterButton.Content" xml:space="preserve"><value>Filter…</value></data>
+  <data name="AskFilterButton.ToolTipService.ToolTip" xml:space="preserve"><value>Search only some books, chosen by tag or by name</value></data>
+  <data name="AskClearFilterButton.Content" xml:space="preserve"><value>Clear</value></data>
+  <data name="AskClearFilterButton.AutomationProperties.Name" xml:space="preserve"><value>Clear the filter and search all books</value></data>
+  <data name="Filter_DialogTitle" xml:space="preserve"><value>Search only in</value></data>
+  <data name="Filter_TagsHeading" xml:space="preserve"><value>Tags</value></data>
+  <data name="Filter_BooksHeading" xml:space="preserve"><value>Books</value></data>
+  <data name="Filter_TagItem" xml:space="preserve"><value>{0} ({1})</value></data>
+  <data name="Filter_NoTags" xml:space="preserve"><value>No tags yet. Add tags to your books on the Library page.</value></data>
+  <data name="Filter_FindBook" xml:space="preserve"><value>Find a book</value></data>
+  <data name="Filter_Apply" xml:space="preserve"><value>Apply</value></data>
+  <data name="Filter_Clear" xml:space="preserve"><value>Search all books</value></data>
+  <data name="Tags_EditTitle" xml:space="preserve"><value>Tags for {0}</value></data>
+  <data name="Tags_AddTitle" xml:space="preserve"><value>Add tags to {0} books</value></data>
+  <data name="Tags_Explain" xml:space="preserve"><value>Separate tags with commas, for example: novels, to read, Austen.</value></data>
+  <data name="Tags_Hint" xml:space="preserve"><value>Tags</value></data>
+  <data name="Tags_InUse" xml:space="preserve"><value>Already in use: {0}</value></data>
+  <data name="Tags_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="SettingsSummaryContextBox.Header" xml:space="preserve"><value>Text around each result in a summary</value></data>
+  <data name="SettingsSummaryContextNote.Text" xml:space="preserve"><value>Each result gets its own short summary, written from its passage. More surrounding text makes each summary clearer but takes longer to write.</value></data>
+  <data name="Settings_ContextSmall" xml:space="preserve"><value>Small (fastest)</value></data>
+  <data name="Settings_ContextMedium" xml:space="preserve"><value>Medium</value></data>
+  <data name="Settings_ContextLarge" xml:space="preserve"><value>Large (clearest, slowest)</value></data>
+  <data name="AskEditQuestionButton.ToolTipService.ToolTip" xml:space="preserve"><value>Edit this question and search again</value></data>
+  <data name="AskEditQuestionButton.AutomationProperties.Name" xml:space="preserve"><value>Edit this question and search again</value></data>
+  <data name="AskRetryQuestionButton.ToolTipService.ToolTip" xml:space="preserve"><value>Ask this question again</value></data>
+  <data name="AskRetryQuestionButton.AutomationProperties.Name" xml:space="preserve"><value>Ask this question again</value></data>
+  <data name="AskEditingNote.Text" xml:space="preserve"><value>Editing your last question. Searching replaces it.</value></data>
+  <data name="AskCancelEditButton.Content" xml:space="preserve"><value>Cancel</value></data>
+</root>

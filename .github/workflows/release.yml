@@ -1,0 +1,64 @@
+# Builds the installer on a Windows runner, checks its checksum file and size, and keeps both as a build artifact.
+# Run by hand (Actions > Release installer > Run workflow) or by pushing a tag like v0.1.0. It is not part of the
+# per-push CI because it downloads llama.cpp and compresses about 200 MB each time. It does not publish a GitHub release.
+name: Release installer
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version number for the installer file name
+        default: 0.1.0
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  installer:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install Inno Setup
+        run: choco install innosetup --no-progress -y
+
+      - name: Work out the version
+        id: version
+        shell: pwsh
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          $v = $env:INPUT_VERSION
+          if (-not $v) { $v = $env:REF_NAME.TrimStart('v') }
+          if ($v -notmatch '^\d+\.\d+\.\d+$') { throw "Version '$v' is not like 1.2.3." }
+          "value=$v" >> $env:GITHUB_OUTPUT
+
+      - name: Build the installer
+        shell: pwsh
+        run: scripts\build-release.ps1 -Version "${{ steps.version.outputs.value }}"
+
+      - name: Check the checksum file matches the installer
+        shell: pwsh
+        run: |
+          $installer = Get-Item publish\installer\Docent-Setup-*.exe
+          $line = (Get-Content "$($installer.FullName).sha256" -Raw).Trim()
+          $expected = "$((Get-FileHash -Algorithm SHA256 $installer.FullName).Hash.ToLowerInvariant())  $($installer.Name)"
+          if ($line -ne $expected) { throw "Checksum file says '$line', expected '$expected'." }
+          if ($installer.Length -gt 200MB) { throw "Installer is over 200 MB." }
+          "### Installer`n$($installer.Name): $([math]::Round($installer.Length / 1MB, 1)) MB`n``$line``" >> $env:GITHUB_STEP_SUMMARY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer
+          path: |
+            publish/installer/Docent-Setup-*.exe
+            publish/installer/Docent-Setup-*.exe.sha256
+          retention-days: 30

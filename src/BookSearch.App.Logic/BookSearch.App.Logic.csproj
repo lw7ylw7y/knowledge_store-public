@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Everything the desktop app does that isn't drawing: settings, start-up decision, wizard and page view models.
+       Plain net8.0 so it is tested on any machine; the WinUI 3 project (BookSearch.App) only binds to it. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookSearch.Core\BookSearch.Core.csproj" />
+    <ProjectReference Include="..\BookSearch.Models\BookSearch.Models.csproj" />
+  </ItemGroup>
+
+</Project>

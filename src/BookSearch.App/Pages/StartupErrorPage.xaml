@@ -1,0 +1,11 @@
+<Page
+    x:Class="BookSearch.App.Pages.StartupErrorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Padding="48,32" Spacing="12" MaxWidth="640" HorizontalAlignment="Left">
+        <TextBlock x:Uid="StartupErrorTitle" Style="{StaticResource TitleTextBlockStyle}" />
+        <TextBlock x:Uid="StartupErrorBody" TextWrapping="Wrap" />
+        <TextBlock x:Name="Detail" IsTextSelectionEnabled="True" TextWrapping="Wrap" />
+    </StackPanel>
+</Page>

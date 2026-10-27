@@ -1,0 +1,15 @@
+bin/
+obj/
+*:Zone.Identifier
+Books/
+publish/
+bench-library/
+
+__pycache__/
+*.pyc
+
+# Local eval and grounding output can name the owner's own books; only the committed baseline is kept
+eval-reports/*
+!eval-reports/baseline-keyword-only.md
+
+CLAUDE.md

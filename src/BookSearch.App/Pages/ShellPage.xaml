@@ -1,0 +1,27 @@
+<Page
+    x:Class="BookSearch.App.Pages.ShellPage"
+    KeyboardAcceleratorPlacementMode="Hidden"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Icons only: no "Open Navigation" button and no expanded pane. Each item has a tooltip (and a screen-reader name). -->
+    <!-- KeyboardAcceleratorPlacementMode="Hidden" on the page: a page-wide accelerator would otherwise show an "Ctrl+F" tooltip over any text. -->
+    <Page.KeyboardAccelerators>
+        <!-- Ctrl+F: go to Ask and put the cursor in the question box. -->
+        <KeyboardAccelerator Key="F" Modifiers="Control" Invoked="Find_Invoked" />
+    </Page.KeyboardAccelerators>
+
+    <NavigationView x:Name="Nav" IsBackButtonVisible="Collapsed" IsSettingsVisible="False"
+                    PaneDisplayMode="LeftCompact" IsPaneOpen="False" IsPaneToggleButtonVisible="False"
+                    SelectionChanged="Nav_SelectionChanged">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="NavAsk" Tag="ask" Icon="Find" />
+            <NavigationViewItem x:Uid="NavHistory" Tag="history" Icon="Clock" />
+            <NavigationViewItem x:Uid="NavLibrary" Tag="library" Icon="Library" />
+        </NavigationView.MenuItems>
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem x:Uid="NavSettings" Tag="settings" Icon="Setting" />
+        </NavigationView.FooterMenuItems>
+        <Frame x:Name="ContentFrame" />
+    </NavigationView>
+</Page>

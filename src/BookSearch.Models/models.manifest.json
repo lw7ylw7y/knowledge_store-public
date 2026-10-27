@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "llama-server-b11430",
+      "role": "runtime",
+      "file": "llama-b11430-bin-win-cpu-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11430/llama-b11430-bin-win-cpu-x64.zip",
+      "sha256": "b608455b0109793f774537d63d15d4cf2098ddbc5b200ebc9a648e1d85369666",
+      "sizeBytes": 19399499,
+      "license": "MIT",
+      "source": "ggml-org/llama.cpp release b11430, Windows CPU x64 (the program that runs the models; unpacked into bin)",
+      "serverArgs": []
+    },
+    {
+      "id": "qwen3-embedding-0.6b-q8_0",
+      "role": "embedding",
+      "file": "Qwen3-Embedding-0.6B-Q8_0.gguf",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B-GGUF/resolve/main/Qwen3-Embedding-0.6B-Q8_0.gguf",
+      "sha256": "06507c7b42688469c4e7298b0a1e16deff06caf291cf0a5b278c308249c3e439",
+      "sizeBytes": 639150592,
+      "license": "Apache-2.0",
+      "source": "Qwen/Qwen3-Embedding-0.6B-GGUF (official)",
+      "serverArgs": []
+    },
+    {
+      "id": "qwen3.5-2b-q4_k_m",
+      "role": "llm",
+      "tier": "minimum",
+      "file": "Qwen3.5-2B-Q4_K_M.gguf",
+      "url": "https://huggingface.co/unsloth/Qwen3.5-2B-GGUF/resolve/main/Qwen3.5-2B-Q4_K_M.gguf",
+      "sha256": "aaf42c8b7c3cab2bf3d69c355048d4a0ee9973d48f16c731c0520ee914699223",
+      "sizeBytes": 1280835840,
+      "license": "Apache-2.0",
+      "source": "unsloth/Qwen3.5-2B-GGUF (community quantization of Qwen/Qwen3.5-2B)",
+      "serverArgs": []
+    },
+    {
+      "id": "qwen3.5-4b-q4_k_m",
+      "role": "llm",
+      "tier": "recommended",
+      "file": "Qwen3.5-4B-Q4_K_M.gguf",
+      "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/main/Qwen3.5-4B-Q4_K_M.gguf",
+      "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+      "sizeBytes": 2740937888,
+      "license": "Apache-2.0",
+      "source": "unsloth/Qwen3.5-4B-GGUF (community quantization of Qwen/Qwen3.5-4B)",
+      "serverArgs": []
+    }
+  ]
+}

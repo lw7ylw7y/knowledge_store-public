@@ -1,0 +1,58 @@
+{
+  "description": "Retrieval evaluation set for the fixture books. A hit is correct when it comes from expectedFile and its text contains any of expectedContains (case-insensitive). Types: answerable (shares words with the passage), paraphrase (shares almost none), cross-language (question and book are in different languages), keyword (a name), out-of-library (expectedFile is null; the library should say it doesn't cover the topic).",
+  "questions": [
+    { "id": "alice-01", "type": "answerable", "language": "en", "question": "How does Alice fall down the rabbit-hole and what does she notice on the way down?", "expectedFile": "alice.epub", "expectedContains": ["Down, down, down"] },
+    { "id": "alice-02", "type": "answerable", "language": "en", "question": "Why does Alice shrink after drinking from the little bottle?", "expectedFile": "alice.epub", "expectedContains": ["DRINK ME"] },
+    { "id": "alice-03", "type": "answerable", "language": "en", "question": "What question does the Caterpillar ask Alice?", "expectedFile": "alice.epub", "expectedContains": ["Who are YOU?"] },
+    { "id": "alice-04", "type": "answerable", "language": "en", "question": "What does the Cheshire Cat say about everyone in Wonderland?", "expectedFile": "alice.epub", "expectedContains": ["all mad here"] },
+    { "id": "alice-05", "type": "answerable", "language": "en", "question": "How does the Queen of Hearts react when she is angry?", "expectedFile": "alice.epub", "expectedContains": ["Off with her head"] },
+    { "id": "alice-06", "type": "answerable", "language": "en", "question": "At the Mad Tea-Party, why is it always tea-time?", "expectedFile": "alice.epub", "expectedContains": ["always six o"] },
+    { "id": "alice-07", "type": "answerable", "language": "en", "question": "Who stole the tarts?", "expectedFile": "alice.epub", "expectedContains": ["he stole those tarts"] },
+    { "id": "alice-08", "type": "paraphrase", "language": "en", "question": "A girl chases a hurrying animal into a burrow and tumbles for a very long time", "expectedFile": "alice.epub", "expectedContains": ["Down, down, down", "went straight on like a tunnel"] },
+    { "id": "alice-09", "type": "keyword", "language": "en", "question": "Cheshire Cat", "expectedFile": "alice.epub", "expectedContains": ["Cheshire"] },
+
+    { "id": "pride-01", "type": "answerable", "language": "en", "question": "Why does Mr. Darcy refuse to dance with Elizabeth at the ball?", "expectedFile": "pride.epub", "expectedContains": ["not handsome enough to tempt me"] },
+    { "id": "pride-02", "type": "answerable", "language": "en", "question": "What is the famous opening claim about a single man with a good fortune?", "expectedFile": "pride.epub", "expectedContains": ["universally acknowledged"] },
+    { "id": "pride-03", "type": "answerable", "language": "en", "question": "How does Mr. Collins explain his reasons for wanting to marry?", "expectedFile": "pride.epub", "expectedContains": ["My reasons for marrying"] },
+    { "id": "pride-04", "type": "answerable", "language": "en", "question": "What scandal does Lydia cause by running away?", "expectedFile": "pride.epub", "expectedContains": ["Gretna Green"] },
+    { "id": "pride-05", "type": "answerable", "language": "en", "question": "How does Darcy first declare his feelings to Elizabeth?", "expectedFile": "pride.epub", "expectedContains": ["In vain have I struggled"] },
+    { "id": "pride-06", "type": "paraphrase", "language": "en", "question": "Why is the mother so anxious to see her daughters wed?", "expectedFile": "pride.epub", "expectedContains": ["business of her life was to get her daughters married"] },
+    { "id": "pride-07", "type": "cross-language", "language": "es", "question": "¿Cómo le declara el señor Darcy su amor a Elizabeth?", "expectedFile": "pride.epub", "expectedContains": ["ardently I admire and love you"] },
+    { "id": "pride-08", "type": "keyword", "language": "en", "question": "Bingley", "expectedFile": "pride.epub", "expectedContains": ["Bingley"] },
+
+    { "id": "quijote-01", "type": "answerable", "language": "es", "question": "¿Por qué don Quijote ataca los molinos de viento?", "expectedFile": "quijote.epub", "expectedContains": ["molinos de viento"] },
+    { "id": "quijote-02", "type": "answerable", "language": "es", "question": "¿Quién es Sancho Panza y qué le promete don Quijote?", "expectedFile": "quijote.epub", "expectedContains": ["Sancho Panza"] },
+    { "id": "quijote-03", "type": "answerable", "language": "es", "question": "¿Cómo perdió el juicio don Quijote leyendo libros de caballerías?", "expectedFile": "quijote.epub", "expectedContains": ["libros de caballerías"] },
+    { "id": "quijote-04", "type": "cross-language", "language": "en", "question": "Why does Don Quixote believe the windmills are giants?", "expectedFile": "quijote.epub", "expectedContains": ["gigantes"] },
+    { "id": "quijote-05", "type": "answerable", "language": "es", "question": "¿Quién es Dulcinea del Toboso para don Quijote?", "expectedFile": "quijote.epub", "expectedContains": ["Dulcinea del Toboso"] },
+    { "id": "quijote-06", "type": "answerable", "language": "es", "question": "¿Qué es el yelmo de Mambrino?", "expectedFile": "quijote.epub", "expectedContains": ["yelmo de Mambrino"] },
+
+    { "id": "kokoro-01", "type": "answerable", "language": "ja", "question": "「先生」とは誰のことですか", "expectedFile": "kokoro.epub", "expectedContains": ["先生と呼んでいた"] },
+    { "id": "kokoro-02", "type": "answerable", "language": "ja", "question": "語り手が先生と知り合ったのはどこでしたか", "expectedFile": "kokoro.epub", "expectedContains": ["鎌倉"] },
+    { "id": "kokoro-03", "type": "cross-language", "language": "en", "question": "Why does the narrator avoid giving the teacher's real name?", "expectedFile": "kokoro.epub", "expectedContains": ["本名は打ち明けない"] },
+
+    { "id": "origin-01", "type": "answerable", "language": "en", "question": "How does natural selection work?", "expectedFile": "origin.pdf", "expectedContains": ["Natural selection acts solely"] },
+    { "id": "origin-02", "type": "answerable", "language": "en", "question": "What does the book say about pigeons, dogs and cabbages?", "expectedFile": "origin.pdf", "expectedContains": ["Pigeons, dogs and cabbages"] },
+    { "id": "origin-03", "type": "paraphrase", "language": "en", "question": "Why do more creatures get born than can possibly survive?", "expectedFile": "origin.pdf", "expectedContains": ["struggle for existence"] },
+
+    { "id": "notes-01", "type": "answerable", "language": "en", "question": "How do small habits add up over time?", "expectedFile": "notes.md", "expectedContains": ["Small habits compound"] },
+    { "id": "notes-02", "type": "answerable", "language": "en", "question": "Is cramming or spaced repetition better for memory?", "expectedFile": "notes.md", "expectedContains": ["Spaced repetition"] },
+
+    { "id": "arabic-01", "type": "answerable", "language": "ar", "question": "من هو الرجل الذي يحب الكتب؟", "expectedFile": "arabic.txt", "expectedContains": ["يحب الكتب"] },
+
+    { "id": "ool-01", "type": "out-of-library", "language": "en", "question": "quantum chromodynamics", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-02", "type": "out-of-library", "language": "en", "question": "How do I change a flat tire on a bicycle?", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-03", "type": "out-of-library", "language": "en", "question": "What is the capital city of Australia?", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-04", "type": "out-of-library", "language": "en", "question": "Explain how photosynthesis produces glucose in leaves", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-05", "type": "out-of-library", "language": "en", "question": "What are the common symptoms of influenza?", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-06", "type": "out-of-library", "language": "ja", "question": "最新のスマートフォンの性能を比較してください", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-07", "type": "out-of-library", "language": "es", "question": "¿Cómo se cocina una paella valenciana?", "expectedFile": null, "expectedContains": [] },
+    { "id": "ool-08", "type": "out-of-library", "language": "en", "question": "Which programming language is best for building web servers?", "expectedFile": null, "expectedContains": [] },
+    { "id": "kokoro-04", "type": "cross-language", "language": "en", "question": "Where did the narrator first meet the teacher?", "expectedFile": "kokoro.epub", "expectedContains": ["鎌倉"] },
+    { "id": "kokoro-05", "type": "cross-language", "language": "en", "question": "What did the narrator always call the man he writes about?", "expectedFile": "kokoro.epub", "expectedContains": ["先生と呼んでいた"] },
+    { "id": "quijote-07", "type": "cross-language", "language": "en", "question": "Who is Dulcinea del Toboso to Don Quixote?", "expectedFile": "quijote.epub", "expectedContains": ["Dulcinea del Toboso"] },
+    { "id": "arabic-02", "type": "answerable", "language": "ar", "question": "ماذا وجد الرجل في السوق؟", "expectedFile": "arabic.txt", "expectedContains": ["كتابا قديما"] },
+    { "id": "arabic-03", "type": "cross-language", "language": "en", "question": "What did the man find at the market one day?", "expectedFile": "arabic.txt", "expectedContains": ["كتابا قديما"] },
+    { "id": "arabic-04", "type": "cross-language", "language": "en", "question": "What does the man who loves books do every night before sleeping?", "expectedFile": "arabic.txt", "expectedContains": ["يقرأ كل ليلة"] }
+  ]
+}

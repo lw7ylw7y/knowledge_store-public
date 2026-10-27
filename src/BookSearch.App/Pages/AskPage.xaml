@@ -1,0 +1,200 @@
+<Page
+    x:Class="BookSearch.App.Pages.AskPage"
+    KeyboardAcceleratorPlacementMode="Hidden"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="using:BookSearch.App"
+    xmlns:ask="using:BookSearch.App.Ask">
+
+    <!-- The Ask page is a conversation (ST-24): the questions of one thread, newest at the bottom, each followed by its summary and
+         a collapsible list of sources. The question box and "New thread" are at the bottom. -->
+    <Page.KeyboardAccelerators>
+        <!-- Esc stops the summary being written (or the next one waiting). -->
+        <KeyboardAccelerator Key="Escape" Invoked="Escape_Invoked" />
+    </Page.KeyboardAccelerators>
+
+    <Grid Padding="32,32,32,24" RowSpacing="12" MaxWidth="1200" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+            <TextBlock x:Uid="AskTitle" Style="{StaticResource TitleTextBlockStyle}" VerticalAlignment="Center" />
+            <Button Grid.Column="1" x:Uid="AskNewThreadButton" Command="{x:Bind ViewModel.NewThreadCommand}" />
+        </Grid>
+
+        <StackPanel Grid.Row="1" Spacing="8">
+            <InfoBar Severity="Informational" CloseButtonClick="IncompleteBar_CloseButtonClick"
+                     IsOpen="{x:Bind ViewModel.HasIncompleteNotice, Mode=OneWay}"
+                     Message="{x:Bind ViewModel.IncompleteNotice, Mode=OneWay}" />
+            <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.ShowNoBooks, Mode=OneWay}">
+                <TextBlock x:Uid="AskNoBooksTitle" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock x:Uid="AskNoBooksBody" TextWrapping="Wrap" />
+                <Button x:Uid="AskGoToLibraryButton" Style="{StaticResource AccentButtonStyle}"
+                        Command="{x:Bind ViewModel.GoToLibraryCommand}" />
+            </StackPanel>
+            <StackPanel Spacing="8" Visibility="{x:Bind ViewModel.ShowStillIndexing, Mode=OneWay}">
+                <TextBlock x:Uid="AskIndexingTitle" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock x:Uid="AskIndexingBody" TextWrapping="Wrap" />
+                <Button x:Uid="AskGoToLibraryButton" Command="{x:Bind ViewModel.GoToLibraryCommand}" />
+            </StackPanel>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" x:Name="TurnsScroll">
+            <ItemsControl ItemsSource="{x:Bind ViewModel.Turns}" HorizontalAlignment="Stretch">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="ask:TurnViewModel">
+                        <StackPanel Spacing="8" Margin="0,0,0,24">
+                            <!-- The question. -->
+                            <Border Padding="12,8" CornerRadius="8" HorizontalAlignment="Left"
+                                    Background="{ThemeResource ControlFillColorSecondaryBrush}">
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                    <StackPanel Spacing="2">
+                                        <TextBlock Text="{x:Bind Question}" TextWrapping="Wrap" IsTextSelectionEnabled="True"
+                                                   FlowDirection="{x:Bind app:Rtl.For(Question)}"
+                                                   Style="{StaticResource BodyStrongTextBlockStyle}" />
+                                        <TextBlock Text="{x:Bind When, Mode=OneWay}" FontSize="12" IsTextSelectionEnabled="True"
+                                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                    </StackPanel>
+                                    <!-- Edit the newest question and search again, or ask it again as it is. -->
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="2" VerticalAlignment="Top"
+                                                Visibility="{x:Bind IsLatest, Mode=OneWay}">
+                                        <Button x:Uid="AskEditQuestionButton" Command="{x:Bind EditCommand}" Padding="6"
+                                                Background="Transparent" BorderThickness="0">
+                                            <SymbolIcon Symbol="Edit" />
+                                        </Button>
+                                        <Button x:Uid="AskRetryQuestionButton" Command="{x:Bind RetryCommand}" Padding="6"
+                                                Background="Transparent" BorderThickness="0">
+                                            <SymbolIcon Symbol="Refresh" />
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                            <!-- Chips on one row, left to right: the filter the question was asked with, then the follow-up as it
+                                 was rewritten to stand on its own (it takes the rest of the row and gives way with an ellipsis).
+                                 The full text of either is in its tooltip. -->
+                            <StackPanel Spacing="8" Visibility="{x:Bind HasChips, Mode=OneWay}">
+                                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8" Visibility="{x:Bind HasChipRow, Mode=OneWay}">
+                                    <Border Padding="12,4" CornerRadius="16" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                            Background="{ThemeResource ControlFillColorSecondaryBrush}"
+                                            Visibility="{x:Bind HasFilter, Mode=OneWay}"
+                                            ToolTipService.ToolTip="{x:Bind FilterText, Mode=OneWay}">
+                                        <TextBlock Text="{x:Bind FilterText, Mode=OneWay}" TextTrimming="CharacterEllipsis" MaxWidth="360" />
+                                    </Border>
+                                    <Border Grid.Column="1" Padding="12,4,4,4" CornerRadius="16" HorizontalAlignment="Left"
+                                            Background="{ThemeResource ControlFillColorSecondaryBrush}"
+                                            Visibility="{x:Bind HasContext, Mode=OneWay}"
+                                            ToolTipService.ToolTip="{x:Bind ContextText, Mode=OneWay}">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="4">
+                                            <TextBlock Text="{x:Bind ContextText, Mode=OneWay}" VerticalAlignment="Center"
+                                                       TextTrimming="CharacterEllipsis" />
+                                            <Button Grid.Column="1" x:Uid="AskContextRemoveButton" Command="{x:Bind RemoveContextCommand}"
+                                                    IsEnabled="{x:Bind IsLatest, Mode=OneWay}" Padding="6"
+                                                    Background="Transparent" BorderThickness="0">
+                                                <SymbolIcon Symbol="Cancel" />
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <!-- The question in the other languages of the library it was also searched in (DCR-11): a row of its own, no remove button. -->
+                                <Border Padding="12,4" CornerRadius="16" HorizontalAlignment="Left"
+                                        Background="{ThemeResource ControlFillColorSecondaryBrush}"
+                                        Visibility="{x:Bind HasAlsoSearched, Mode=OneWay}"
+                                        ToolTipService.ToolTip="{x:Bind AlsoSearchedText, Mode=OneWay}">
+                                    <TextBlock Text="{x:Bind AlsoSearchedText, Mode=OneWay}" TextTrimming="CharacterEllipsis" />
+                                </Border>
+                            </StackPanel>
+
+                            <ProgressBar IsIndeterminate="True" Visibility="{x:Bind IsSearching, Mode=OneWay}" />
+                            <InfoBar x:Uid="AskNotCoveredBar" Severity="Warning" CloseButtonClick="NotCoveredBar_CloseButtonClick"
+                                     IsOpen="{x:Bind ShowNotCovered, Mode=OneWay}" />
+                            <InfoBar Severity="Warning" CloseButtonClick="WarningBar_CloseButtonClick"
+                                     IsOpen="{x:Bind HasWarning, Mode=OneWay}" Message="{x:Bind Warning, Mode=OneWay}" />
+                            <TextBlock Text="{x:Bind NoResultsText, Mode=OneWay}" TextWrapping="Wrap" />
+
+                            <!-- This question's results, each with its own summary. Older questions' results start folded. -->
+                            <Expander x:Uid="AskSourcesExpander" IsExpanded="{x:Bind SourcesExpanded, Mode=TwoWay}"
+                                      HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                      Visibility="{x:Bind HasResults, Mode=OneWay}">
+                                <ItemsControl ItemsSource="{x:Bind Results}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate x:DataType="ask:ResultRow">
+                                            <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                                                    Background="Transparent" BorderThickness="0" Padding="0,8" Click="Result_Click"
+                                                    AutomationProperties.Name="{x:Bind AutomationName, Mode=OneWay}">
+                                                <StackPanel Spacing="4">
+                                                    <TextBlock Text="{x:Bind Title}" Style="{StaticResource BodyStrongTextBlockStyle}"
+                                                               TextTrimming="CharacterEllipsis" />
+                                                    <TextBlock Text="{x:Bind Author}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    <TextBlock Text="{x:Bind Where}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                    <!-- The summary of this passage (ST-34): waiting, being written, done, or "doesn't cover your question". -->
+                                                    <TextBlock Text="{x:Bind SummaryText, Mode=OneWay}" TextWrapping="Wrap"
+                                                               FlowDirection="{x:Bind app:Rtl.For(SummaryText), Mode=OneWay}"
+                                                               Visibility="{x:Bind HasSummaryText, Mode=OneWay}" />
+                                                    <TextBlock app:Highlight.Source="{x:Bind Excerpt}" TextWrapping="Wrap"
+                                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                                                </StackPanel>
+                                            </Button>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Expander>
+
+                            <!-- A question restored from the history: its saved summaries as text only, since the results are not stored. -->
+                            <Border Padding="16" CornerRadius="8" Visibility="{x:Bind IsRestored, Mode=OneWay}"
+                                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+                                <StackPanel Spacing="8">
+                                    <TextBlock x:Uid="AskSummaryTitle" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                                    <TextBlock Text="{x:Bind SavedStatus, Mode=OneWay}" TextWrapping="Wrap"
+                                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                               Visibility="{x:Bind HasSavedStatus, Mode=OneWay}" />
+                                    <TextBlock Text="{x:Bind SavedSummary, Mode=OneWay}" TextWrapping="Wrap" IsTextSelectionEnabled="True"
+                                               FlowDirection="{x:Bind app:Rtl.For(SavedSummary), Mode=OneWay}"
+                                               Visibility="{x:Bind HasSavedSummary, Mode=OneWay}" />
+                                </StackPanel>
+                            </Border>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3" Spacing="8">
+            <!-- The search filter (ST-25): it stays until cleared, and every question is searched inside it. -->
+            <!-- Filter, what it searches in, and Clear right after it (a long description is cut at MaxWidth). -->
+            <Grid ColumnDefinitions="Auto,Auto,Auto,*" ColumnSpacing="8">
+                <Button x:Uid="AskFilterButton" Command="{x:Bind ViewModel.ChooseFilterCommand}" />
+                <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.FilterSummary, Mode=OneWay}" VerticalAlignment="Center"
+                           MaxWidth="560" TextTrimming="CharacterEllipsis" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                <Button Grid.Column="2" x:Uid="AskClearFilterButton" Command="{x:Bind ViewModel.ClearFilterCommand}"
+                        Visibility="{x:Bind ViewModel.HasFilter, Mode=OneWay}" />
+            </Grid>
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8" Visibility="{x:Bind ViewModel.IsEditing, Mode=OneWay}">
+                <TextBlock x:Uid="AskEditingNote" TextWrapping="Wrap" VerticalAlignment="Center"
+                           Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+                <Button Grid.Column="1" x:Uid="AskCancelEditButton" Command="{x:Bind ViewModel.CancelEditCommand}" />
+            </Grid>
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                <TextBox x:Uid="AskQuestionBox" x:Name="QuestionBox"
+                         Text="{x:Bind ViewModel.Question, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{x:Bind ViewModel.CanAsk, Mode=OneWay}"
+                         KeyDown="QuestionBox_KeyDown" />
+                <!-- Search is the accent button, except in the no-books state where Go to Library is. -->
+                <Button Grid.Column="1" x:Uid="AskSearchButton" Style="{StaticResource AccentButtonStyle}"
+                        Command="{x:Bind ViewModel.SearchCommand}"
+                        Visibility="{x:Bind ViewModel.ShowSearchAccent, Mode=OneWay}"
+                        IsEnabled="{x:Bind ViewModel.CanAsk, Mode=OneWay}" />
+                <Button Grid.Column="1" x:Uid="AskSearchButton"
+                        Command="{x:Bind ViewModel.SearchCommand}"
+                        Visibility="{x:Bind ViewModel.ShowNoBooks, Mode=OneWay}"
+                        IsEnabled="{x:Bind ViewModel.CanAsk, Mode=OneWay}" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

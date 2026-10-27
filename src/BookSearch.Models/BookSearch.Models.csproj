@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookSearch.Core\BookSearch.Core.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The pinned model list ships inside the assembly. -->
+    <EmbeddedResource Include="models.manifest.json" LogicalName="BookSearch.Models.models.manifest.json" />
+  </ItemGroup>
+
+</Project>
